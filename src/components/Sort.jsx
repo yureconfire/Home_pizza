@@ -1,9 +1,12 @@
 import { useState } from 'react';
 
-function Sort() {
+function Sort({ activeSort, setActiveSort }) {
   const [openPopup, setOpenPopup] = useState(false);
-  const [activeSort, setActiveSort] = useState('Популярності');
-  const list = ['Популярності', 'Ціні', 'Алфавіту'];
+  const list = [
+    { name: 'Популярності', listValue: 'rating' },
+    { name: 'Ціні', listValue: 'price' },
+    { name: 'Алфавіту', listValue: 'alphabet' },
+  ];
 
   function handleActiveSort(name) {
     setActiveSort(name);
@@ -25,17 +28,17 @@ function Sort() {
           />
         </svg>
         <b>Сортувати по:</b>
-        <span onClick={() => setOpenPopup(!openPopup)}>{activeSort}</span>
+        <span onClick={() => setOpenPopup(!openPopup)}>{activeSort.name}</span>
       </div>
       {openPopup && (
         <div className="sort__popup">
           <ul>
-            {list.map((name) => (
+            {list.map((obj) => (
               <li
-                onClick={() => handleActiveSort(name)}
-                className={name === activeSort ? 'active' : ''}
-                key={name}>
-                {name}
+                onClick={() => handleActiveSort(obj)}
+                className={obj.name === activeSort.name ? 'active' : ''}
+                key={obj.name}>
+                {obj.name}
               </li>
             ))}
           </ul>
