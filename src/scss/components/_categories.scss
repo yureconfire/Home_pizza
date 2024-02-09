@@ -28,6 +28,15 @@
         background-color: #282828;
         color: #fff;
       }
+
+      @media (max-width: 890px) {
+        padding: 10px 25px;
+        margin-right: 5px;
+      }
+      @media (max-width: 530px) {
+        padding: 7px 20px;
+        margin-right: 5px;
+      }
     }
   }
 }
